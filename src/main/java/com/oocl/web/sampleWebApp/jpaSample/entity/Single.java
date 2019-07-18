@@ -7,7 +7,11 @@ public class Single {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
 
     @Column(length = 64,nullable = false)
     private String name;

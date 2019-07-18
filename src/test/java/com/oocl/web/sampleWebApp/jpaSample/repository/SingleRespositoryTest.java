@@ -135,4 +135,20 @@ public class SingleRespositoryTest {
         Assertions.assertThrows(Exception.class,()->singletest.get(1).getName());
         Assertions.assertThrows(Exception.class,()->singletest.get(2).getName());
     }
+
+    @Test
+    public void test_should_update_user_message() {
+        //given
+        Single single = new Single();
+        single.setName("test");
+        singleRepository.save(single);
+        single.setName("updatatest");
+
+        //when
+        singleRepository.updateName(single.getId());
+        Single singletest = singleRepository.findByName("updatatest");
+
+        //then
+        Assertions.assertEquals("updatatest",singletest.getName());
+    }
 }
